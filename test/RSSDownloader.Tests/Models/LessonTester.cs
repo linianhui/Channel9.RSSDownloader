@@ -9,19 +9,13 @@ namespace RSSDownloader.Tests.Models
     public class LessonTester : ModelTestBase
     {
         [Fact]
-        public void when_element_is_null()
+        public void when_channel_is_null()
         {
-            Assert.Throws<ArgumentNullException>(() => Lesson.Builder.Build(BuildChannel(), (XElement)null));
+            Assert.Throws<ArgumentNullException>(() => Lesson.Build(null));
         }
 
         [Fact]
-        public void when_element_is_not_item()
-        {
-            Assert.Throws<ArgumentException>(() => Lesson.Builder.Build(BuildChannel(), XElement.Parse("<i></i>")));
-        }
-
-        [Fact]
-        public void when_channel_items_is_valid()
+        public void when_lessons_is_valid()
         {
             var lessons = BuildLessons();
 

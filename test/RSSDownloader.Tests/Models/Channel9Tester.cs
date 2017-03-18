@@ -9,15 +9,9 @@ namespace RSSDownloader.Tests.Models
     public class ChannelTester : ModelTestBase
     {
         [Fact]
-        public void when_element_is_null()
+        public void when_rss_is_null()
         {
-            Assert.Throws<ArgumentNullException>(() => Channel.Builder.Build(BuildRss(),null));
-        }
-
-        [Fact]
-        public void when_element_is_not_channel()
-        {
-            Assert.Throws<ArgumentException>(() => Channel.Builder.Build(BuildRss(),XElement.Parse("<i></i>")));
+            Assert.Throws<ArgumentNullException>(() => Channel.Build(null));
         }
 
         [Fact]

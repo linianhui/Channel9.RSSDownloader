@@ -9,15 +9,9 @@ namespace RSSDownloader.Tests.Models
     public class MediaContentTester : ModelTestBase
     {
         [Fact]
-        public void when_element_is_null()
+        public void when_media_group_is_null()
         {
-            Assert.Throws<ArgumentNullException>(() => MediaContent.Builder.Build(BuildMediaGroup(),(XElement)null));
-        }
-
-        [Fact]
-        public void when_element_is_not_item()
-        {
-            Assert.Throws<ArgumentException>(() => MediaContent.Builder.Build(BuildMediaGroup(), XElement.Parse("<i></i>")));
+            Assert.Throws<ArgumentNullException>(() => MediaContent.Build(null));
         }
 
         [Fact]

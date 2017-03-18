@@ -15,7 +15,7 @@ namespace RSSDownloader.Web
         public async Task<Rss> GetAsync(string rssUrl)
         {
             var rssStream = await _httpClient.GetStreamAsync(rssUrl);
-            return Rss.Builder.Build(XElement.Load(rssStream));
+            return Rss.Build(XElement.Load(rssStream));
         }
     }
 }

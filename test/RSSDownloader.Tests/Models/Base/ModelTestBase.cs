@@ -7,7 +7,7 @@ namespace RSSDownloader.Tests.Models.Base
 {
     public class ModelTestBase
     {
-        public Rss BuildRss() => Rss.Builder.Build(StaticData.Rss);
+        public Rss BuildRss() => Rss.Build(StaticData.Rss);
 
         public Channel BuildChannel() => BuildRss().Channel;
 
