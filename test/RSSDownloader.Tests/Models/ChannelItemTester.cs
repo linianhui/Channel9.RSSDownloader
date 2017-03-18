@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Xml.Linq;
 using RSSDownloader.Models;
-using RSSDownloader.Tests.Models.Datas;
+using RSSDownloader.Tests.Models.Base;
 using Xunit;
 
 namespace RSSDownloader.Tests.Models
 {
-    public class ChannelItemTester : TestBase
+    public class ChannelItemTester : ModelTestBase
     {
         [Fact]
         public void when_element_is_null()

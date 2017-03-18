@@ -3,9 +3,9 @@ using System.Linq;
 using RSSDownloader.Models;
 using RSSDownloader.Tests.Models.Datas;
 
-namespace RSSDownloader.Tests.Models
+namespace RSSDownloader.Tests.Models.Base
 {
-    public class TestBase
+    public class ModelTestBase
     {
         public Rss BuildRss() => Rss.Builder.Build(StaticData.Rss);
 
