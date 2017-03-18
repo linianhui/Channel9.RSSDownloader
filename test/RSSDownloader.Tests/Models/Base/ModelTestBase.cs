@@ -13,6 +13,8 @@ namespace RSSDownloader.Tests.Models.Base
 
         public List<Lesson> BuildLessons() => BuildRss().Channel.Lessons;
 
+        public Enclosure BuildEnclosure() => BuildRss().Channel.Lessons[0].Enclosure;
+
         public MediaGroup BuildMediaGroup() => BuildRss().Channel.Lessons[0].Media;
 
         public List<MediaContent> BuildMediaContents() => BuildRss().Channel.Lessons[0].Media.Contents;

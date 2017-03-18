@@ -20,6 +20,8 @@ namespace RSSDownloader.Models
 
         public string Link { get; private set; }
 
+        public Enclosure Enclosure { get; private set; }
+
         public MediaGroup Media { get; private set; }
 
         #region Build
@@ -40,6 +42,7 @@ namespace RSSDownloader.Models
                 Title = lessonElement.GetElementValue(TitleName),
                 Link = lessonElement.GetElementValue(LinkName)
             };
+            lesson.Enclosure = Enclosure.Build(lesson);
             lesson.Media = MediaGroup.Build(lesson);
             return lesson;
         }

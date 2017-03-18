@@ -7,6 +7,7 @@
     <item>
       <title>item title</title>
       <link>https://channel9.msdn.com/item-link</link>
+      <enclosure url="https://channel9.msdn.com/1.pptx"></enclosure>
       <media:group>
         <media:content url="http://https://channel9.msdn.com/1.mp4"
                        fileSize="1234567"></media:content>

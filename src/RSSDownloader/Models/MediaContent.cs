@@ -7,7 +7,7 @@ using RSSDownloader.Extensions;
 
 namespace RSSDownloader.Models
 {
-    public class MediaContent
+    public class MediaContent : IMediaFile
     {
         public MediaGroup Group { get; }
 
@@ -22,9 +22,9 @@ namespace RSSDownloader.Models
 
         public int FileSize { get; private set; }
 
-        public string FileNameOfUrl => Path.GetFileName(this.Url);
+        public string OriginalFileName => Path.GetFileName(this.Url);
 
-        public string FileNameOfLesson => this.Group.Lesson.Title.ToFileName() + Path.GetExtension(this.Url);
+        public string FriendlyFileName => this.Group.Lesson.Title.ToFileName() + Path.GetExtension(this.Url);
 
         #region Build
 
