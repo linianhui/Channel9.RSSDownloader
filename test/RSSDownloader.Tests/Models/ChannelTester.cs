@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Xml.Linq;
 using RSSDownloader.Models;
 using RSSDownloader.Tests.Models.Base;
 using Xunit;
