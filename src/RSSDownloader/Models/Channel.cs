@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Xml.Linq;
 
 namespace RSSDownloader.Models
 {
     public class Channel
     {
-        private Channel() { }
+        private Channel()
+        {
+        }
 
         public string Title { get; private set; }
 

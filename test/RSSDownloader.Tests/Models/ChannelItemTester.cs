@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Xml.Linq;
 using RSSDownloader.Models;
 using RSSDownloader.Tests.Models.Xml;
@@ -32,7 +30,6 @@ namespace RSSDownloader.Tests.Models
 
             Assert.Equal("item title 2", channel.Items[1].Title);
             Assert.Equal("https://channel9.msdn.com/item-link-2", channel.Items[1].Link);
-
         }
     }
 }

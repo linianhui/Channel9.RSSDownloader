@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Xml.Linq;
 using RSSDownloader.Models;
 using RSSDownloader.Tests.Models.Xml;

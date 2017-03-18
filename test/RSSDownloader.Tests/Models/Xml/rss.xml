@@ -9,9 +9,9 @@
       <link>https://channel9.msdn.com/item-link</link>
       <media:group>
         <media:content url="http://https://channel9.msdn.com/1.mp4"
-                 fileSize="1234567"></media:content>
+                       fileSize="1234567"></media:content>
         <media:content url="http://https://channel9.msdn.com/2.mp3"
-                 fileSize="12345"></media:content>
+                       fileSize="12345"></media:content>
       </media:group>
     </item>
     <item>
