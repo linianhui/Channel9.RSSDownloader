@@ -10,7 +10,7 @@ namespace RSSDownloader.Models
     {
         public static class Builder
         {
-            public static readonly XName ElementName = XName.Get("content", Channel.Builder.MediaNamespace.NamespaceName);
+            public static readonly XName ElementName = XName.Get("content", Rss.Builder.MediaNamespace.NamespaceName);
             private const string UrlName = "url";
             private const string FileSizeName = "fileSize";
 

@@ -8,7 +8,6 @@ namespace RSSDownloader.Models
         public static class Builder
         {
             public static readonly XName ElementName = XName.Get("channel");
-            public static readonly XNamespace MediaNamespace = XNamespace.Get("http://search.yahoo.com/mrss/");
 
             private const string TitleName = "title";
             private const string LinkName = "link";

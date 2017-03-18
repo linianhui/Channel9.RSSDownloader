@@ -17,15 +17,15 @@ namespace RSSDownloader.Tests.Models
         [Fact]
         public void when_element_is_not_item()
         {
-            Assert.Throws<ArgumentException>(() => MediaContent.Builder.Build(StaticData.Rss));
+            Assert.Throws<ArgumentException>(() => MediaContent.Builder.Build(XElement.Parse("<i></i>")));
         }
 
         [Fact]
-        public void when_content_is_valid()
+        public void when_media_group_is_valid()
         {
-            var channel = BuildChannel();
+            var mediaGroup = BuildMediaGroup();
 
-            Assert.NotNull(channel.Items[0].Media);
+            Assert.NotNull(mediaGroup);
         }
     }
 }

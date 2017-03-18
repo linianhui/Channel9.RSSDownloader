@@ -10,7 +10,7 @@ namespace RSSDownloader.Models
     {
         public static class Builder
         {
-            public static readonly XName ElementName = XName.Get("group", Channel.Builder.MediaNamespace.NamespaceName);
+            public static readonly XName ElementName = XName.Get("group", Rss.Builder.MediaNamespace.NamespaceName);
 
             public static MediaGroup Build(XElement mediaGroupElement)
             {
