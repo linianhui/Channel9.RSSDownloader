@@ -3,5 +3,13 @@
   <channel>
     <title> dotnet - Channel 9 </title>
     <link>https://s.ch9.ms/Blogs/dotnet</link>
+    <item>
+      <title>Get started with VS Code using C# and .NET Core on Windows</title>
+      <link>https://channel9.msdn.com/Blogs/dotnet/Get-started-VSCode-Csharp-NET-Core-Windows</link>
+    </item>
+    <item>
+      <title>2</title>
+      <link>https://channel9.msdn.com/2</link>
+    </item>
   </channel>
 </rss>

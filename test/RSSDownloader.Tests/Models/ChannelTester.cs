@@ -7,24 +7,24 @@ using Xunit;
 
 namespace RSSDownloader.Tests.Models
 {
-    public class ChannelTester
+    public class ChannelTester:TestBase
     {
         [Fact]
         public void when_element_is_null()
         {
-            Assert.Throws<ArgumentNullException>(() => new Channel(null));
+            Assert.Throws<ArgumentNullException>(() => Channel.Parser.Parse(null));
         }
 
         [Fact]
         public void when_element_is_not_channel()
         {
-            Assert.Throws<ArgumentException>(() => new Channel(RssXml.Rss));
+            Assert.Throws<ArgumentException>(() => Channel.Parser.Parse(RssXml.Rss));
         }
 
         [Fact]
         public void when_channel_is_valid()
         {
-            var channel = new Channel(RssXml.Rss.Element(Channel.ChannelName));
+            var channel = BuildChannel();
 
             Assert.Equal("dotnet - Channel 9", channel.Title);
             Assert.Equal("https://s.ch9.ms/Blogs/dotnet", channel.Link);
