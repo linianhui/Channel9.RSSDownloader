@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Models\Xml\rss.xml" />
+    <None Remove="Models\Datas\rss.xml" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Models\Xml\rss.xml" />
+    <EmbeddedResource Include="Models\Datas\rss.xml" />
   </ItemGroup>
 
   <ItemGroup>

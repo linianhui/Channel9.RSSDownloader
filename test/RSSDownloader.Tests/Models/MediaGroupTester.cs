@@ -6,7 +6,7 @@ using Xunit;
 
 namespace RSSDownloader.Tests.Models
 {
-    public class MediaContentTester : TestBase
+    public class MediaGroupTester : TestBase
     {
         [Fact]
         public void when_element_is_null()
@@ -25,13 +25,7 @@ namespace RSSDownloader.Tests.Models
         {
             var channel = BuildChannel();
 
-            Assert.Equal(2, channel.Items[0].Media.Contents.Count);
-            Assert.Equal("http://https://channel9.msdn.com/1.mp4", channel.Items[0].Media.Contents[0].Url);
-            Assert.Equal(1234567, channel.Items[0].Media.Contents[0].FileSize);
-
-            Assert.Equal(0, channel.Items[1].Media.Contents.Count);
-            Assert.Equal("http://https://channel9.msdn.com/2.mp3", channel.Items[0].Media.Contents[1].Url);
-            Assert.Equal(12345, channel.Items[0].Media.Contents[1].FileSize);
+            Assert.NotNull(channel.Items[0].Media);
         }
     }
 }

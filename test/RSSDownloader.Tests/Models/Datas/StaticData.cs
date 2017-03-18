@@ -2,15 +2,15 @@
 using System.Reflection;
 using System.Xml.Linq;
 
-namespace RSSDownloader.Tests.Models.Xml
+namespace RSSDownloader.Tests.Models.Datas
 {
-    public static class RssXml
+    public static class StaticData
     {
         public static XElement Rss = XElement.Load(GetXmlFile());
 
         private static Stream GetXmlFile()
         {
-            var currentType = typeof(RssXml).GetTypeInfo();
+            var currentType = typeof(StaticData).GetTypeInfo();
             return currentType.Assembly.GetManifestResourceStream(currentType.Namespace + ".rss.xml");
         }
     }

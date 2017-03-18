@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml.Linq;
 using RSSDownloader.Models;
-using RSSDownloader.Tests.Models.Xml;
+using RSSDownloader.Tests.Models.Datas;
 using Xunit;
 
 namespace RSSDownloader.Tests.Models
@@ -17,13 +17,15 @@ namespace RSSDownloader.Tests.Models
         [Fact]
         public void when_element_is_not_item()
         {
-            Assert.Throws<ArgumentException>(() => ChannelItem.Builder.Build(RssXml.Rss));
+            Assert.Throws<ArgumentException>(() => ChannelItem.Builder.Build(StaticData.Rss));
         }
 
         [Fact]
         public void when_item_is_valid()
         {
             var channel = BuildChannel();
+
+            Assert.Equal(2, channel.Items.Count);
 
             Assert.Equal("item title", channel.Items[0].Title);
             Assert.Equal("https://channel9.msdn.com/item-link", channel.Items[0].Link);

@@ -17,6 +17,8 @@
     <item>
       <title>item title 2</title>
       <link>https://channel9.msdn.com/item-link-2</link>
+      <media:group>
+      </media:group>
     </item>
   </channel>
 </rss>

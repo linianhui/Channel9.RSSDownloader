@@ -1,6 +1,6 @@
 ﻿using System;
 using RSSDownloader.Models;
-using RSSDownloader.Tests.Models.Xml;
+using RSSDownloader.Tests.Models.Datas;
 using Xunit;
 
 namespace RSSDownloader.Tests.Models
@@ -16,7 +16,7 @@ namespace RSSDownloader.Tests.Models
         [Fact]
         public void when_element_is_not_channel()
         {
-            Assert.Throws<ArgumentException>(() => Channel.Builder.Build(RssXml.Rss));
+            Assert.Throws<ArgumentException>(() => Channel.Builder.Build(StaticData.Rss));
         }
 
         [Fact]

@@ -1,10 +1,11 @@
-﻿using RSSDownloader.Models;
-using RSSDownloader.Tests.Models.Xml;
+﻿using System.Linq;
+using RSSDownloader.Models;
+using RSSDownloader.Tests.Models.Datas;
 
 namespace RSSDownloader.Tests.Models
 {
     public class TestBase
     {
-        public Channel BuildChannel() => Channel.Builder.Build(RssXml.Rss.Element(Channel.Builder.ElementName));
+        public Channel BuildChannel() => Channel.Builder.Build(StaticData.Rss.Elements().First());
     }
 }
