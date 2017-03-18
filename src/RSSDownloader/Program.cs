@@ -15,10 +15,6 @@ namespace RSSDownloader
 
         private static void Main(string[] channel9RssUrls)
         {
-            channel9RssUrls = new string[]
-            {
-                "https://s.ch9.ms/Events/Build/2013/rss/"
-            };
             Throw.IfIsNullOrEmpty(channel9RssUrls, nameof(channel9RssUrls));
 
             foreach (var channel9RssUrl in channel9RssUrls)
