@@ -12,14 +12,14 @@ namespace RSSDownloader.Models
         {
             public static readonly XName ElementName = XName.Get("group", Rss.Builder.MediaNamespace.NamespaceName);
 
-            public static MediaGroup Build(XElement mediaGroupElement)
+            public static MediaGroup Build(Lesson lesson, XElement mediaGroupElement)
             {
+                Throw.IfIsNull(lesson, nameof(lesson));
                 Throw.IfIsNull(mediaGroupElement, nameof(mediaGroupElement));
                 Throw.IfElementNameIsNotMatch(mediaGroupElement, ElementName);
-                return new MediaGroup
-                {
-                    Contents = MediaContent.Builder.Build(mediaGroupElement.Elements())
-                };
+                var mediaGroup = new MediaGroup(lesson);
+                mediaGroup.Contents = MediaContent.Builder.Build(mediaGroup, mediaGroupElement.Elements());
+                return mediaGroup;
             }
         }
     }

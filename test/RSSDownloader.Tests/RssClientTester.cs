@@ -13,7 +13,7 @@ namespace RSSDownloader.Tests
 
             Assert.NotNull(rss);
             Assert.NotNull(rss.Channel);
-            Assert.True(rss.Channel.Items.Count > 0);
+            Assert.True(rss.Channel.Lessons.Count > 0);
         }
     }
 }

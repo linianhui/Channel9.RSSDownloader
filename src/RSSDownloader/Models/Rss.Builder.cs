@@ -17,10 +17,9 @@ namespace RSSDownloader.Models
             {
                 Throw.IfIsNull(rssElement, nameof(rssElement));
                 Throw.IfElementNameIsNotMatch(rssElement, ElementName);
-                return new Rss
-                {
-                    Channel = Channel.Builder.Build(rssElement.Element(Channel.Builder.ElementName))
-                };
+                var rss = new Rss();
+                rss.Channel = Channel.Builder.Build(rss, rssElement.Element(Channel.Builder.ElementName));
+                return rss;
             }
         }
     }

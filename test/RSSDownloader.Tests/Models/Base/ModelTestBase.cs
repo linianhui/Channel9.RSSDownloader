@@ -11,10 +11,10 @@ namespace RSSDownloader.Tests.Models.Base
 
         public Channel BuildChannel() => BuildRss().Channel;
 
-        public List<ChannelItem> BuildChannelItems() => BuildRss().Channel.Items;
+        public List<Lesson> BuildLessons() => BuildRss().Channel.Lessons;
 
-        public MediaGroup BuildMediaGroup() => BuildRss().Channel.Items[0].Media;
+        public MediaGroup BuildMediaGroup() => BuildRss().Channel.Lessons[0].Media;
 
-        public List<MediaContent> BuildMediaContents() => BuildRss().Channel.Items[0].Media.Contents;
+        public List<MediaContent> BuildMediaContents() => BuildRss().Channel.Lessons[0].Media.Contents;
     }
 }

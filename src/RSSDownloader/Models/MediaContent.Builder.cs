@@ -14,22 +14,22 @@ namespace RSSDownloader.Models
             private const string UrlName = "url";
             private const string FileSizeName = "fileSize";
 
-            public static MediaContent Build(XElement mediaContentElement)
+            public static MediaContent Build(MediaGroup mediaGroup, XElement mediaContentElement)
             {
                 Throw.IfIsNull(mediaContentElement, nameof(mediaContentElement));
                 Throw.IfElementNameIsNotMatch(mediaContentElement, ElementName);
-                return new MediaContent
+                return new MediaContent(mediaGroup)
                 {
                     FileSize = mediaContentElement.GetAttributeValue<int>(FileSizeName),
                     Url = mediaContentElement.GetAttributeValue(UrlName),
                 };
             }
 
-            public static List<MediaContent> Build(IEnumerable<XElement> itemElements)
+            public static List<MediaContent> Build(MediaGroup mediaGroup, IEnumerable<XElement> mediaContentElements)
             {
-                Throw.IfIsNull(itemElements, nameof(itemElements));
-                return itemElements
-                    .Select(Build)
+                Throw.IfIsNull(mediaContentElements, nameof(mediaContentElements));
+                return mediaContentElements
+                    .Select(mediaContentElement => Build(mediaGroup, mediaContentElement))
                     .ToList();
             }
         }

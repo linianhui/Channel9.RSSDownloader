@@ -12,16 +12,18 @@ namespace RSSDownloader.Models
             private const string TitleName = "title";
             private const string LinkName = "link";
 
-            public static Channel Build(XElement channelElement)
+            public static Channel Build(Rss rss, XElement channelElement)
             {
+                Throw.IfIsNull(rss, nameof(rss));
                 Throw.IfIsNull(channelElement, nameof(channelElement));
                 Throw.IfElementNameIsNotMatch(channelElement, ElementName);
-                return new Channel
+                var channel = new Channel(rss)
                 {
                     Title = channelElement.GetElementValue(TitleName),
                     Link = channelElement.GetElementValue(LinkName),
-                    Items = ChannelItem.Builder.Build(channelElement.Elements(ChannelItem.Builder.ElementName))
                 };
+                channel.Lessons = Lesson.Builder.Build(channel, channelElement.Elements(Lesson.Builder.ElementName));
+                return channel;
             }
         }
     }

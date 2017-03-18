@@ -11,13 +11,13 @@ namespace RSSDownloader.Tests.Models
         [Fact]
         public void when_element_is_null()
         {
-            Assert.Throws<ArgumentNullException>(() => MediaContent.Builder.Build((XElement)null));
+            Assert.Throws<ArgumentNullException>(() => MediaGroup.Builder.Build(BuildLessons()[0], (XElement)null));
         }
 
         [Fact]
         public void when_element_is_not_item()
         {
-            Assert.Throws<ArgumentException>(() => MediaContent.Builder.Build(XElement.Parse("<i></i>")));
+            Assert.Throws<ArgumentException>(() => MediaGroup.Builder.Build(BuildLessons()[0], XElement.Parse("<i></i>")));
         }
 
         [Fact]

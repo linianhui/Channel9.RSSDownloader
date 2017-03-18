@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
-
-namespace RSSDownloader.Models
+﻿namespace RSSDownloader.Models
 {
-    public partial class ChannelItem
+    public partial class Lesson
     {
-        private ChannelItem()
+        public Channel Channel { get; }
+
+        private Lesson(Channel channel)
         {
+            Channel = channel;
         }
 
         public string Title { get; private set; }
@@ -13,5 +14,6 @@ namespace RSSDownloader.Models
         public string Link { get; private set; }
 
         public MediaGroup Media { get; private set; }
+
     }
 }
