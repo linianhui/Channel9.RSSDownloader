@@ -1,15 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<rss version="2.0">
+<rss version="2.0"
+     xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
-    <title> dotnet - Channel 9 </title>
-    <link>https://s.ch9.ms/Blogs/dotnet</link>
+    <title>Channel 9 title</title>
+    <link>https://channel9.msdn.com/</link>
     <item>
-      <title>Get started with VS Code using C# and .NET Core on Windows</title>
-      <link>https://channel9.msdn.com/Blogs/dotnet/Get-started-VSCode-Csharp-NET-Core-Windows</link>
+      <title>item title</title>
+      <link>https://channel9.msdn.com/item-link</link>
+      <media:group>
+        <media:content url="http://https://channel9.msdn.com/1.mp4"
+                 fileSize="1234567"></media:content>
+        <media:content url="http://https://channel9.msdn.com/2.mp3"
+                 fileSize="12345"></media:content>
+      </media:group>
     </item>
     <item>
-      <title>2</title>
-      <link>https://channel9.msdn.com/2</link>
+      <title>item title 2</title>
+      <link>https://channel9.msdn.com/item-link-2</link>
     </item>
   </channel>
 </rss>

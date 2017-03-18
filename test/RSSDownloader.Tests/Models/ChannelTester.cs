@@ -12,13 +12,13 @@ namespace RSSDownloader.Tests.Models
         [Fact]
         public void when_element_is_null()
         {
-            Assert.Throws<ArgumentNullException>(() => Channel.Parser.Parse(null));
+            Assert.Throws<ArgumentNullException>(() => Channel.Builder.Build(null));
         }
 
         [Fact]
         public void when_element_is_not_channel()
         {
-            Assert.Throws<ArgumentException>(() => Channel.Parser.Parse(RssXml.Rss));
+            Assert.Throws<ArgumentException>(() => Channel.Builder.Build(RssXml.Rss));
         }
 
         [Fact]
@@ -26,8 +26,8 @@ namespace RSSDownloader.Tests.Models
         {
             var channel = BuildChannel();
 
-            Assert.Equal("dotnet - Channel 9", channel.Title);
-            Assert.Equal("https://s.ch9.ms/Blogs/dotnet", channel.Link);
+            Assert.Equal("Channel 9 title", channel.Title);
+            Assert.Equal("https://channel9.msdn.com/", channel.Link);
         }
     }
 }

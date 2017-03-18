@@ -5,6 +5,6 @@ namespace RSSDownloader.Tests.Models
 {
     public class TestBase
     {
-        public Channel BuildChannel() => Channel.Parser.Parse(RssXml.Rss.Element(Channel.Parser.ElementName));
+        public Channel BuildChannel() => Channel.Builder.Build(RssXml.Rss.Element(Channel.Builder.ElementName));
     }
 }

@@ -6,23 +6,21 @@ using System.Xml.Linq;
 
 namespace RSSDownloader.Models
 {
-    public class ChannelItem
+    public class MediaContent
     {
-        private ChannelItem() { }
+        private MediaContent() { }
 
-        public string Title { get; private set; }
+        public string Url { get; private set; }
 
-        public string Link { get; private set; }
-
-        public List<MediaContent> Medias { get; private set; }
+        public int FileSize { get; private set; }
 
         public static class Builder
         {
-            public static readonly XName ElementName = XName.Get("item");
-            private const string TitleName = "title";
-            private const string LinkName = "link";
+            public static readonly XName ElementName = XName.Get("content", "http://search.yahoo.com/mrss/");
+            private const string UrlName = "url";
+            private const string FileSizeName = "fileSize";
 
-            public static ChannelItem Build(XElement itemElement)
+            public static MediaContent Build(XElement itemElement)
             {
                 if (itemElement == null)
                 {
@@ -32,15 +30,14 @@ namespace RSSDownloader.Models
                 {
                     throw new ArgumentException($"{itemElement.Name.LocalName} is not {ElementName} element.");
                 }
-                return new ChannelItem
+                return new MediaContent
                 {
-                    Title = itemElement.GetElementValue(TitleName),
-                    Link = itemElement.GetElementValue(LinkName),
-                    Medias = MediaContent.Builder.Build(itemElement.Descendants(MediaContent.Builder.ElementName))
+                    FileSize = itemElement.GetAttributeValue<int>(FileSizeName),
+                    Url = itemElement.GetAttributeValue(UrlName),
                 };
             }
 
-            public static List<ChannelItem> Build(IEnumerable<XElement> itemElements)
+            public static List<MediaContent> Build(IEnumerable<XElement> itemElements)
             {
                 if (itemElements == null)
                 {

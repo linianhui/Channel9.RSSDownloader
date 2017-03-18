@@ -15,19 +15,19 @@ namespace RSSDownloader.Models
 
         public List<ChannelItem> Items { get; private set; }
 
-        public static class Parser
+        public static class Builder
         {
-            public const string ElementName = "channel";
+            public static readonly XName ElementName = XName.Get("channel");
             private const string TitleName = "title";
             private const string LinkName = "link";
 
-            public static Channel Parse(XElement channelElement)
+            public static Channel Build(XElement channelElement)
             {
                 if (channelElement == null)
                 {
                     throw new ArgumentNullException(nameof(channelElement));
                 }
-                if (string.Equals(ElementName, channelElement.Name.LocalName, StringComparison.OrdinalIgnoreCase) == false)
+                if (ElementName != channelElement.Name)
                 {
                     throw new ArgumentException($"{channelElement.Name.LocalName} is not {ElementName} element.");
                 }
@@ -35,7 +35,7 @@ namespace RSSDownloader.Models
                 {
                     Title = channelElement.GetElementValue(TitleName),
                     Link = channelElement.GetElementValue(LinkName),
-                    Items = ChannelItem.Parser.Parse(channelElement.Elements(ChannelItem.Parser.ElementName))
+                    Items = ChannelItem.Builder.Build(channelElement.Elements(ChannelItem.Builder.ElementName))
                 };
             }
         }
