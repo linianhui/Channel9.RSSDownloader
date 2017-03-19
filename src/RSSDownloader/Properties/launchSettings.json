@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "RSSDownloader": {
+      "commandName": "Project",
+      "commandLineArgs": "https://channel9.msdn.com/Series/aspnetmonsters/rss https://channel9.msdn.com/blogs/dotnet/rss"
+    }
+  }
+}

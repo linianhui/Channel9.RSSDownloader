@@ -49,6 +49,8 @@ namespace RSSDownloader
 
             CreateEnclosureDownloadFile(rss, filePath);
 
+            CreateCaptionDownloadFile(rss, filePath);
+
             Log("[Save File] OK", ConsoleColor.Green);
         }
 
@@ -67,6 +69,19 @@ namespace RSSDownloader
                 .Select(lesson => lesson.Enclosure)
                 .ToList();
             CreateDownloadFileCore(filePath, "enclosure", enclosures);
+        }
+
+        private static void CreateCaptionDownloadFile(Rss rss, string filePath)
+        {
+            var captions = rss.Channel.Lessons
+                .Select(lesson => lesson.Caption)
+                .ToList();
+            var downloadFile = new StringBuilder();
+            foreach (var file in captions)
+            {
+                downloadFile.AppendLine($"Invoke-WebRequest \"{file.Url}\" -OutFile \"{file.FriendlyFileName}\"");
+            }
+            File.WriteAllText($"{filePath}_captions_download.ps1", downloadFile.ToString());
         }
 
         private static void CreateDownloadFileCore(string filePath, string type, IEnumerable<IMediaFile> files)
