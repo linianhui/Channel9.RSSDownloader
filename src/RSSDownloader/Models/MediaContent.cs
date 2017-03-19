@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using RSSDownloader.Extensions;
 
 namespace RSSDownloader.Models
 {
-    public class MediaContent : IMediaFile
+    public class MediaContent
     {
         public MediaGroup Group { get; }
 
@@ -21,10 +19,6 @@ namespace RSSDownloader.Models
         public string Url { get; private set; }
 
         public int FileSize { get; private set; }
-
-        public string OriginalFileName => Path.GetFileName(this.Url);
-
-        public string FriendlyFileName => this.Group.Lesson.Title.ToFileName() + Path.GetExtension(this.Url);
 
         #region Build
 

@@ -1,9 +1,6 @@
-﻿using System;
-using System.IO;
-
-namespace RSSDownloader.Models
+﻿namespace RSSDownloader.Models
 {
-    public class Caption : IMediaFile
+    public class Caption
     {
         public Lesson Lesson { get; }
 
@@ -13,9 +10,5 @@ namespace RSSDownloader.Models
         }
 
         public string Url => $"{Lesson.Link}/captions?f=webvtt&l=zh-cn";
-
-        public string OriginalFileName => Path.GetFileName(Lesson.Link) + ".vtt";
-
-        public string FriendlyFileName => this.Lesson.Title.ToFileName() + ".vtt";
     }
 }

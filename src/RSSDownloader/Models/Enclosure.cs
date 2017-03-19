@@ -1,11 +1,9 @@
-﻿using System;
-using System.IO;
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
 using RSSDownloader.Extensions;
 
 namespace RSSDownloader.Models
 {
-    public class Enclosure : IMediaFile
+    public class Enclosure
     {
         public Lesson Lesson { get; }
 
@@ -17,10 +15,6 @@ namespace RSSDownloader.Models
         public XElement Raw { get; private set; }
 
         public string Url { get; private set; }
-
-        public string OriginalFileName => Path.GetFileName(this.Url);
-
-        public string FriendlyFileName => this.Lesson.Title.ToFileName() + Path.GetExtension(this.Url);
 
         #region Build
 

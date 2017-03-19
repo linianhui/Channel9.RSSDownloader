@@ -5,6 +5,7 @@ using System.Text;
 using RSSDownloader.Extensions;
 using RSSDownloader.Web;
 using System.Linq;
+using RSSDownloader.Download;
 using RSSDownloader.Models;
 
 namespace RSSDownloader
@@ -17,10 +18,7 @@ namespace RSSDownloader
         {
             Throw.IfIsNullOrEmpty(channel9RssUrls, nameof(channel9RssUrls));
 
-            foreach (var channel9RssUrl in channel9RssUrls)
-            {
-                Download(channel9RssUrl);
-            }
+            channel9RssUrls.ToList().ForEach(Download);
 
             Log("\r\nEnd", ConsoleColor.Green);
         }
@@ -43,58 +41,10 @@ namespace RSSDownloader
             {
                 Directory.CreateDirectory(filePath);
             }
-            filePath = filePath + "\\" + rss.Channel.FileName;
 
-            CreateVideoDownloadFile(rss, filePath);
-
-            CreateEnclosureDownloadFile(rss, filePath);
-
-            CreateCaptionDownloadFile(rss, filePath);
+            Files.Build(rss).ForEach(file => file.Save(filePath));
 
             Log("[Save File] OK", ConsoleColor.Green);
-        }
-
-        private static void CreateVideoDownloadFile(Rss rss, string filePath)
-        {
-            var mediaContents = rss.Channel.Lessons
-                .Select(lesson => lesson.Media.Max)
-                .ToList();
-            CreateDownloadFileCore(filePath, "video", mediaContents);
-        }
-
-        private static void CreateEnclosureDownloadFile(Rss rss, string filePath)
-        {
-            var enclosures = rss.Channel.Lessons
-                .Where(lesson => lesson.Enclosure != null)
-                .Select(lesson => lesson.Enclosure)
-                .ToList();
-            CreateDownloadFileCore(filePath, "enclosure", enclosures);
-        }
-
-        private static void CreateCaptionDownloadFile(Rss rss, string filePath)
-        {
-            var captions = rss.Channel.Lessons
-                .Select(lesson => lesson.Caption)
-                .ToList();
-            var downloadFile = new StringBuilder();
-            foreach (var file in captions)
-            {
-                downloadFile.AppendLine($"Invoke-WebRequest \"{file.Url}\" -OutFile \"{file.FriendlyFileName}\"");
-            }
-            File.WriteAllText($"{filePath}_captions_download.ps1", downloadFile.ToString());
-        }
-
-        private static void CreateDownloadFileCore(string filePath, string type, IEnumerable<IMediaFile> files)
-        {
-            var downloadFile = new StringBuilder();
-            var renameFile = new StringBuilder();
-            foreach (var file in files)
-            {
-                downloadFile.AppendLine(file.Url);
-                renameFile.AppendLine($"RENAME \"{file.OriginalFileName}\" \"{file.FriendlyFileName}\"");
-            }
-            File.WriteAllText($"{filePath}_{type}_download.txt", downloadFile.ToString());
-            File.WriteAllText($"{filePath}_{type}_rename.bat", renameFile.ToString());
         }
 
         private static void Log(string message, ConsoleColor? color = null)
