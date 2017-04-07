@@ -1,4 +1,4 @@
-# Channel9_RSS_Downloader
+# Channel9 RSS Downloader
 Use RSS of channel.msdn.com to bulid (video , ppt , caption and rename) download link.
 
 # How use?
