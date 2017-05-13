@@ -19,6 +19,7 @@ namespace RSSDownloader.Download
                 return Rss.Channel.Lessons
                     .Where(lesson => lesson.Enclosure != null)
                     .Select(lesson => FileUrl.Build(lesson.Enclosure))
+                    .Where(fileUrl => fileUrl != null)
                     .ToList();
             }
         }

@@ -17,7 +17,9 @@ namespace RSSDownloader.Download
             get
             {
                 return Rss.Channel.Lessons
+                    .Where(lesson => lesson.Caption != null)
                     .Select(lesson => FileUrl.Build(lesson.Caption))
+                    .Where(fileUrl => fileUrl != null)
                     .ToList();
             }
         }

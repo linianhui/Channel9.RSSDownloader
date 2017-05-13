@@ -26,7 +26,6 @@ namespace RSSDownloader.Models
 
         private static MediaGroup BuildCore(Lesson lesson, XElement mediaGroupElement)
         {
-            Throw.IfIsNull(mediaGroupElement, nameof(mediaGroupElement));
             Throw.IfElementNameIsNotMatch(mediaGroupElement, ElementName);
             var mediaGroup = new MediaGroup(lesson)
             {
@@ -39,7 +38,12 @@ namespace RSSDownloader.Models
         public static MediaGroup Build(Lesson lesson)
         {
             Throw.IfIsNull(lesson, nameof(lesson));
-            return BuildCore(lesson, lesson.Raw.Element(ElementName));
+            var mediaGroupElement = lesson.Raw.Element(ElementName);
+            if (mediaGroupElement == null)
+            {
+                return null;
+            }
+            return BuildCore(lesson, mediaGroupElement);
         }
 
         #endregion Build
